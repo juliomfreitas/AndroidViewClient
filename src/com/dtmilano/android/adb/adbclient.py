@@ -79,7 +79,7 @@ UP = 0
 DOWN = 1
 DOWN_AND_UP = 2
 
-TIMEOUT = 15
+TIMEOUT = 30
 
 WIFI_SERVICE = b'wifi'
 
