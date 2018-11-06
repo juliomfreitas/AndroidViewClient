@@ -1142,28 +1142,17 @@ class View:
         return __str
 
     def __str__(self):
-        __str = "View[" + 'utf-8' + 'replace'
+        return ("View(class={}, resource-id={}, uniqueId={}, "
+                "content-desc={}, text={}".format(
+                    self.map['class'].split('.')[-1],
+                    self.map['resource-id'],
+                    self.map['uniqueId'],
+                    self.map['content-desc'],
+                    self.map['text'])
+                )
 
-        if "class" in self.map:
-            __str += " class=" + self.map["class"].__str__() + " "
-        for a in self.map:
-            __str += a + "="
-            # decode() works only on python's 8-bit strings
-            if isinstance(self.map[a], str):
-                __str += self.map[a]
-            else:
-                __str += str(str(self.map[a]), 'utf-8', errors='replace')
-            __str += " "
-        __str += "]   parent="
-        if self.parent:
-            if "class" in self.parent.map:
-                __str += "%s" % self.parent.map["class"]
-            else:
-                __str += self.parent.getId().__str__()
-        else:
-            __str += "None"
+    __repr__ = __str__
 
-        return __str
 
 class TextView(View):
     '''
